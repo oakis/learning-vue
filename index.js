@@ -28,9 +28,10 @@ var app = new Vue({
                 id: this.todos.length + 1,
                 text: this.todoInput,
             });
+            this.todoInput = '';
         },
         removeTodo: function (id) {
             this.todos = this.todos.filter(todo => todo.id !== id);
-        }
+        },
     },
 });

@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Caveat|Roboto&display=swap');
 
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto';
 }
 
 #app {
@@ -20,6 +21,10 @@ h1 {
     font-size: 4em;
 }
 
+button:focus, input:focus {
+    outline: none;
+}
+
 footer {
     position: absolute;
     bottom: 5px;
@@ -33,23 +38,27 @@ footer {
     width: 60%;
 }
 
-.form input, .form button {
-    padding: 18px;
-    border-radius: 5px;
-    border: 1px solid #999;
-    margin-right: 18px;
-    box-shadow: 3px 3px 10px 0px rgba(0,153,110,0.51)
-}
-
 .form input {
-    width: 80%;
+    flex: 1;
+    font-family: 'Caveat';
+    font-size: 2em;
+    padding: 4px;
+    border: 0;
+    border-bottom: 1px dotted #999;
+    margin-right: 16px;
 }
 
-.form button {
-    width: 20%;
+.button-cta {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
+    border-radius: 50%;
+    color: #fff;
+    background-color: cornflowerblue;
 }
 
 .todo-list {
@@ -69,7 +78,8 @@ footer {
     border-bottom: 1px dotted #ccc;
 }
 
-.todo-list-item button {
+.button-remove {
+    color: #ccc;
     border: 0px;
 }
 
@@ -78,7 +88,7 @@ footer {
     transition: all .3s ease;
 }
 .slide-fade-leave-active {
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to {
     transform: translateX(10px);
