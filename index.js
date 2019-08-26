@@ -24,8 +24,9 @@ var app = new Vue({
     },
     methods: {
         addTodo: function () {
+            const getLastId = this.todos.length ? this.todos.slice(-1).pop().id : 0;
             this.todos.push({
-                id: this.todos.length + 1,
+                id: getLastId + 1 || 0,
                 text: this.todoInput,
             });
             this.todoInput = '';
