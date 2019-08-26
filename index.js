@@ -5,19 +5,23 @@ var app = new Vue({
         todos: [
             {
                 id: 1,
-                text: 'lorem ipsum'
+                text: 'lorem ipsum',
+                isCompleted: false,
             },
             {
                 id: 2,
-                text: 'dolor sit amet'
+                text: 'dolor sit amet',
+                isCompleted: false,
             },
             {
                 id: 3,
-                text: 'consectetur adipiscing elit'
+                text: 'consectetur adipiscing elit',
+                isCompleted: true,
             },
             {
                 id: 4,
-                text: 'donec placerat auctor suscipit'
+                text: 'donec placerat auctor suscipit',
+                isCompleted: false,
             },
         ],
         todoInput: '',
@@ -28,11 +32,23 @@ var app = new Vue({
             this.todos.push({
                 id: getLastId + 1 || 0,
                 text: this.todoInput,
+                isCompleted: false,
             });
             this.todoInput = '';
         },
         removeTodo: function (id) {
             this.todos = this.todos.filter(todo => todo.id !== id);
         },
+        toggleComplete: function (id) {
+            this.todos = this.todos.map(todo => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        isCompleted: !todo.isCompleted,
+                    }
+                }
+                return todo;
+            });
+        }
     },
 });

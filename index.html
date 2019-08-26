@@ -20,8 +20,9 @@
                 v-for="(todo, index) in todos"
                 :key="todo.id"
                 class="todo-list-item"
+                @click="toggleComplete(todo.id)"
             >
-                <span>
+                <span :class="{ 'todo-list-item-complete': todo.isCompleted }">
                     {{ todo.text }}
                 </span>
                 <button @click="removeTodo(todo.id)" class="button-remove">x</button>
