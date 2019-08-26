@@ -21,6 +21,10 @@ h1 {
     font-size: 4em;
 }
 
+button {
+    cursor: pointer;
+}
+
 button:focus, input:focus {
     outline: none;
 }
@@ -69,18 +73,30 @@ footer {
 }
 
 .todo-list-item {
-    width: 100%;
+    width: calc(100% - 10px); /* 100% minus padding times two */
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
+    padding: 5px;
     font-family: 'Caveat';
     font-size: 1.5em;
-    border-bottom: 1px dotted #ccc;
+}
+
+.todo-list-item:nth-child(odd) {
+    background-color: #eee;
+}
+
+.todo-list-item:nth-child(even) {
+    background-color: #fefefe;
+}
+
+.todo-list-item-complete {
+    text-decoration: line-through;
 }
 
 .button-remove {
-    color: #ccc;
+    color: red;
     border: 0px;
+    background-color: transparent;
 }
 
 /* Animations */
@@ -91,6 +107,6 @@ footer {
     transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to {
-    transform: translateX(10px);
+    transform: translateX(30px);
     opacity: 0;
 }
