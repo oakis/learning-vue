@@ -5,22 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./index.css" />
     <title>VUE</title>
 </head>
 <body>
     <div id="app">
-        <form v-on:submit.prevent="">
+        <h1>Vue ToDo</h1>
+        <form v-on:submit.prevent="" class="form">
             <input v-model="todoInput">
             <button @click="addTodo">Add todo</button>
         </form>
-        <ul>
-            <li v-for="todo in todos">
-                {{ todo.text }}
-            </li>
-        </ul>
-        <span>
+        <transition-group name="slide-fade" mode="out-in" tag="div" class="todo-list">
+            <div v-for="todo in todos" :key="todo.id" class="todo-list-item">
+                <span>
+                    {{ todo.text }}
+                </span>
+                <button @click="removeTodo(todo.id)">x</button>
+            </div>
+        </transition-group>
+        <footer>
             {{ message }}
-        </span>
+        </footer>
     </div>
 </body>
 <script src="./index.js"></script>
