@@ -11,13 +11,35 @@
 </head>
 <body>
     <div id="app">
+        <transition
+            name="fade-in-bottom"
+            mode="out-in"
+        >
+            <div class="add-fail-toast" v-if="addTodoFailed">
+                <i class="material-icons">
+                    error
+                </i>
+                <span>
+                    Input cannot be empty.
+                </span>
+            </div>
+        </transition>
         <h1>Vue ToDo</h1>
         <form v-on:submit.prevent="" class="form">
             <input v-model="todoInput" placeholder="What needs to be done?" autofocus>
             <button @click="addTodo" class="button-cta">
-                    <i class="material-icons">
+                <transition-group
+                    name="rotate-icon"
+                    mode="out-in"
+                    class="button-animated"
+                >
+                    <i v-if="!addingTodo" class="material-icons icon-stacked-large" :key="'isAdding'">
                         add_circle
                     </i>
+                    <i v-if="addingTodo" class="material-icons icon-stacked-large" :key="'isNotAdding'">
+                        check_circle
+                    </i>
+                </transition-group>
             </button>
         </form>
         <transition-group name="slide-fade" mode="out-in" tag="div" class="todo-list">
@@ -36,10 +58,10 @@
                             mode="out-in"
                             class="button-animated"
                         >
-                            <i v-if="todo.isCompleted" class="material-icons icon-stacked" :key="'isComplete'">
+                            <i v-if="todo.isCompleted" class="material-icons icon-stacked-small" :key="'isComplete'">
                                 check_box
                             </i>
-                            <i v-if="!todo.isCompleted" class="material-icons icon-stacked" :key="'isNotComplete'">
+                            <i v-if="!todo.isCompleted" class="material-icons icon-stacked-small" :key="'isNotComplete'">
                                 check_box_outline_blank
                             </i>
                         </transition-group>

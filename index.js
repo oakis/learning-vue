@@ -25,9 +25,18 @@ var app = new Vue({
             },
         ],
         todoInput: '',
+        addingTodo: false,
+        addTodoFailed: false,
     },
     methods: {
         addTodo: function () {
+            if (this.todoInput === '') {
+                this.addTodoFailed = true;
+                return setTimeout(() => {
+                    this.addTodoFailed = false;
+                }, 3000);
+            }
+            this.addingTodo = true;
             const getLastId = this.todos.length ? this.todos.slice(-1).pop().id : 0;
             this.todos.push({
                 id: getLastId + 1 || 0,
@@ -35,6 +44,9 @@ var app = new Vue({
                 isCompleted: false,
             });
             this.todoInput = '';
+            setTimeout(() => {
+                this.addingTodo = false;
+            }, 1000);
         },
         removeTodo: function (id) {
             this.todos = this.todos.filter(todo => todo.id !== id);

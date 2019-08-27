@@ -59,7 +59,7 @@ footer {
 }
 
 .button-cta i {
-    font-size: 4.1em;
+    font-size: 48px;
 }
 
 .todo-list {
@@ -100,7 +100,7 @@ footer {
 }
 
 .button-remove {
-    color: red;
+    color: orangered;
     border: 0px;
     background-color: transparent;
 }
@@ -111,7 +111,7 @@ footer {
     width: 24px;
 }
 
-.icon-stacked {
+.icon-stacked-small {
     position: absolute;
     height: 24px;
     width: 24px;
@@ -119,10 +119,42 @@ footer {
     left: -12px;
 }
 
+.icon-stacked-large {
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    top: -25px;
+    left: -25px;
+}
+
 .button-complete {
-    color: green;
+    color: yellowgreen;
     border: 0px;
     background-color: transparent;
+}
+
+.add-fail-toast {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 18px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.add-fail-toast span {
+    margin-left: 8px;
+}
+
+.add-fail-toast i {
+    color: orangered;
 }
 
 /* Animations */
@@ -144,5 +176,31 @@ footer {
     transition: all .3s ease;
 }
 .toggle-icon-enter, .toggle-icon-leave-to {
+    opacity: 0;
+}
+
+.rotate-icon-enter-active {
+    transition: all 200ms cubic-bezier(.4, 0, .2, 1);
+}
+.rotate-icon-leave-active {
+    transition: all 200ms cubic-bezier(.4, 0, .2, 1);
+}
+.rotate-icon-enter {
+    transform: rotate(360deg);
+    opacity: 0;
+}
+.rotate-icon-leave-to {
+    transform: rotate(225deg);
+    opacity: 0;
+}
+
+.fade-in-bottom-enter-active {
+    transition: all .2s ease;
+}
+.fade-in-bottom-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-in-bottom-enter, .fade-in-bottom-leave-to {
+    transform: translateY(100px);
     opacity: 0;
 }
