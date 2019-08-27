@@ -58,6 +58,10 @@ footer {
     color: cornflowerblue;
 }
 
+.button-cta i {
+    font-size: 4.1em;
+}
+
 .todo-list {
     width: 60%;
     display: flex;
