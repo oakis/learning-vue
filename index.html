@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="./index.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./index.css">
     <title>VUE</title>
 </head>
 <body>
@@ -13,19 +14,42 @@
         <h1>Vue ToDo</h1>
         <form v-on:submit.prevent="" class="form">
             <input v-model="todoInput" placeholder="What needs to be done?" autofocus>
-            <button @click="addTodo" class="button-cta">+</button>
+            <button @click="addTodo" class="button-cta">
+                    <i class="material-icons">
+                        add_circle
+                    </i>
+            </button>
         </form>
         <transition-group name="slide-fade" mode="out-in" tag="div" class="todo-list">
             <div
                 v-for="(todo, index) in todos"
                 :key="todo.id"
                 class="todo-list-item"
-                @click="toggleComplete(todo.id)"
             >
                 <span :class="{ 'todo-list-item-complete': todo.isCompleted }">
                     {{ todo.text }}
                 </span>
-                <button @click="removeTodo(todo.id)" class="button-remove">x</button>
+                <div class="todo-list-item-toolbar">
+                    <button @click="toggleComplete(todo.id)" class="button-complete">
+                        <transition-group
+                            name="toggle-icon"
+                            mode="out-in"
+                            class="button-animated"
+                        >
+                            <i v-if="todo.isCompleted" class="material-icons icon-stacked" :key="'isComplete'">
+                                check_box
+                            </i>
+                            <i v-if="!todo.isCompleted" class="material-icons icon-stacked" :key="'isNotComplete'">
+                                check_box_outline_blank
+                            </i>
+                        </transition-group>
+                    </button>
+                    <button @click="removeTodo(todo.id)" class="button-remove">
+                            <i class="material-icons">
+                                delete_forever
+                            </i>
+                    </button>
+                </div>
             </div>
         </transition-group>
         <footer>

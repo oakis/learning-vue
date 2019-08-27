@@ -53,16 +53,9 @@ footer {
 }
 
 .button-cta {
-    width: 50px;
-    height: 50px;
     border: 0;
-    font-size: 2em;
-    font-weight: bold;
-    text-transform: uppercase;
     margin: 0;
-    border-radius: 50%;
-    color: #fff;
-    background-color: cornflowerblue;
+    color: cornflowerblue;
 }
 
 .todo-list {
@@ -93,8 +86,37 @@ footer {
     text-decoration: line-through;
 }
 
+.todo-list-item-toolbar {
+    height: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .button-remove {
     color: red;
+    border: 0px;
+    background-color: transparent;
+}
+
+.button-animated {
+    position: relative;
+    height: 24px;
+    width: 24px;
+}
+
+.icon-stacked {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: -12px;
+    left: -12px;
+}
+
+.button-complete {
+    color: green;
     border: 0px;
     background-color: transparent;
 }
@@ -108,5 +130,15 @@ footer {
 }
 .slide-fade-enter, .slide-fade-leave-to {
     transform: translateX(30px);
+    opacity: 0;
+}
+
+.toggle-icon-enter-active {
+    transition: all .3s ease;
+}
+.toggle-icon-leave-active {
+    transition: all .3s ease;
+}
+.toggle-icon-enter, .toggle-icon-leave-to {
     opacity: 0;
 }
