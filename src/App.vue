@@ -4,6 +4,7 @@
     <h1>Vuet ToDo</h1>
     <AddTodo :todos="todos" @add-todo-failed="bool => addTodoFailed = bool" />
     <TodoList :todos="todos" @remove-todo="list => todos = list" @complete-todo="list => todos = list" />
+    <CompletedAllTasks :isAllCompleted="isAllCompleted" />
     <footer>{{ message }}</footer>
   </div>
 </template>
@@ -11,6 +12,7 @@
 <script>
 import AddTodo from "./components/AddTodo.vue";
 import AddTodoFail from "./components/AddTodoFail.vue";
+import CompletedAllTasks from './components/CompletedAllTasks.vue';
 import TodoList from "./components/TodoList.vue";
 
 export default {
@@ -18,7 +20,8 @@ export default {
   components: {
     AddTodo,
     AddTodoFail,
-    TodoList
+    CompletedAllTasks,
+    TodoList,
   },
   data: function() {
     return {
@@ -48,8 +51,10 @@ export default {
       ],
     };
   },
-  methods: {
-
+  computed: {
+    isAllCompleted() {
+      return this.todos.length && !this.todos.map(todo => todo.isCompleted).includes(false);
+    }
   }
 };
 </script>
@@ -145,6 +150,20 @@ footer {
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(30px);
+  opacity: 0;
+}
+
+.slide-fade-zoom-enter-active {
+  transition: all .3s ease-in;
+}
+.slide-fade-zoom-leave-active {
+  transition: all .3s ease-out;
+}
+.slide-fade-zoom-enter {
+  transform: scale(10);
+}
+.slide-fade-zoom-enter,
+.slide-fade-zoom-leave-to {
   opacity: 0;
 }
 
